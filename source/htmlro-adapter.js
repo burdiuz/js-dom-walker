@@ -1,4 +1,4 @@
-const isList = (node) => node instanceof HTMLCollection;
+const isList = (node) => node instanceof HTMLCollection || node instanceof Array;
 
 const toList = (...args) => {
   const { length } = args;
@@ -8,13 +8,18 @@ const toList = (...args) => {
     return node;
   }
 
-  const fragment = document.createDocumentFragment();
+  const list = [];
 
   for (let index = 0; index < length; index++) {
-    fragment.appendChild(args[index]);
+    const part = args[index];
+    if (isList(part)) {
+      list.push.call(part);
+    } else {
+      list.push(part);
+    }
   }
 
-  return fragment.children;
+  return list;
 };
 
 const isNode = (node) => node instanceof HTMLElement;
@@ -55,20 +60,18 @@ const getChildrenByName = (node, name) => {
     return children;
   }
 
-  const fragment = document.createDocumentFragment();
-  console.log(name, children);
+  const list = [];
+
   for (let index = 0; index < children.length; index++) {
     const child = children[index];
-    console.log(' - ', child.nodeName.toLowerCase());
     if (child.nodeName.toLowerCase() === name) {
-      fragment.appendChild(child);
+      list.push(child);
     }
   }
 
-  return fragment.children;
+  return list;
 };
 
-// if list?
 const hasChildren = (node) => !!toNode(node).childElementCount;
 
 const hasChild = (node, name) => {
