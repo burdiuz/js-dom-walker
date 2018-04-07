@@ -4,25 +4,27 @@ import {
   addAugmentations,
   resetAugmentations,
   coreAugmentations,
+  nodeAugmentations,
+  listAugmentations,
   create as createRoot,
 } from 'tree-walker';
 
 import htmlEventAugmentations from './augmentations/event';
-import htmlListAugmentations from './augmentations/list';
-import htmlNodeAugmentations from './augmentations/node';
+import htmlElementAugmentations from './augmentations/element';
 
 import HTMLROAdapter from './htmlro-adapter';
 
-const ATTRIBUTE_KEY = '$';
+import { ATTRIBUTE_KEY, getAttribute } from './attribute';
 
 setDefaultAdapter(HTMLROAdapter);
 
 addAugmentations(coreAugmentations);
-addAugmentations(htmlNodeAugmentations);
-addAugmentations(htmlListAugmentations);
+addAugmentations(nodeAugmentations);
+addAugmentations(listAugmentations);
 addAugmentations(htmlEventAugmentations);
+addAugmentations(htmlElementAugmentations);
 
-setNamePrefix(ATTRIBUTE_KEY, (node, adapter, [name]) => adapter.getAttributeValue(node, name));
+setNamePrefix(ATTRIBUTE_KEY, getAttribute);
 
 const create = (root, adapter = HTMLROAdapter) => createRoot(root, adapter);
 

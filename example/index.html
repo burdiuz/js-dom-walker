@@ -40,6 +40,7 @@
     const dom = DOMWalker.create();
     console.log(dom.body.div.p.text());
     console.log(dom.body.div.children()[1].$class);
+    console.log(dom.body.queryAll('div').map((item) => item.$class));
   }
 </script>
 </body>

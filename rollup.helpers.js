@@ -26,21 +26,7 @@ export const plugins = [
     externalHelpers: true,
     babelrc: false,
   }),
-  commonjs({
-    namedExports: {
-      'node_modules/tree-walker/dist/tree-walker.js': [
-        'setDefaultAdapter',
-        'getDefaultAdapter',
-        'addAugmentations',
-        'hasAugmentation',
-        'resetAugmentations',
-        'coreAugmentations',
-        'setNamePrefix',
-        'isValidPrefix',
-        'create',
-      ],
-    },
-  }),
+  commonjs(),
   json(),
 ];
 

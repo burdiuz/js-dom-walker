@@ -1,4 +1,8 @@
-const isList = (node) => node instanceof HTMLCollection || node instanceof Array;
+const isList = (node) => (
+  node instanceof Array
+  || node instanceof HTMLCollection
+  || node instanceof NodeList
+);
 
 const toList = (...args) => {
   const { length } = args;
@@ -89,6 +93,15 @@ const hasChild = (node, name) => {
 
 const getChildAt = (node, index) => getChildren(node)[index];
 
+const getAttributes = (node) => {
+  node = toNode(node);
+  if (node.hasAttributes()) {
+    return node.attributes;
+  }
+
+  return null;
+};
+
 const hasAttribute = (node, name) => toNode(node).hasAttribute(name);
 
 const getAttributeValue = (node, name) => toNode(node).getAttribute(name);
@@ -115,6 +128,7 @@ export default {
   isList,
   toList,
   isNode,
+  toNode,
   getNodeAt,
   getLength,
   getChildren,
@@ -122,6 +136,7 @@ export default {
   hasChildren,
   hasChild,
   getChildAt,
+  getAttributes,
   hasAttribute,
   getAttributeValue,
   getName,
