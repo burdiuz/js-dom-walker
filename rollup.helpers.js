@@ -10,7 +10,10 @@ export const LIBRARY_FILE_NAME = 'dom-walker'; // dummy, replace with project na
 export const LIBRARY_VAR_NAME = 'DOMWalker'; // dummy, replace with project name
 
 export const plugins = [
-  resolve(),
+  resolve({
+    jsnext: true,
+    main: true,
+  }),
   // flow(),
   babel({
     plugins: [
@@ -23,7 +26,21 @@ export const plugins = [
     externalHelpers: true,
     babelrc: false,
   }),
-  commonjs(),
+  commonjs({
+    namedExports: {
+      'node_modules/tree-walker/dist/tree-walker.js': [
+        'setDefaultAdapter',
+        'getDefaultAdapter',
+        'addAugmentations',
+        'hasAugmentation',
+        'resetAugmentations',
+        'coreAugmentations',
+        'setNamePrefix',
+        'isValidPrefix',
+        'create',
+      ],
+    },
+  }),
   json(),
 ];
 

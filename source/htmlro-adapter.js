@@ -95,7 +95,7 @@ const getAttributeValue = (node, name) => toNode(node).getAttribute(name);
 
 const getName = (node) => toNode(node).nodeName;
 
-const getText = (node) => node.innerText;
+const getText = (node) => toNode(node).innerText;
 
 const getNodeParent = (node) => toNode(node).parentNode;
 

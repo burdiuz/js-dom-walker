@@ -1,24 +1,26 @@
 {
-  "name": "js-lib-environment",
+  "name": "dom-walker",
   "description": "",
-  "version": "0.0.0",
-  "main": "dist/lib.js",
+  "version": "0.0.1",
+  "main": "dist/dom-walker.js",
   "keywords": [
     "js",
     "javascript"
   ],
-  "homepage": "https://github.com/burdiuz/js-lib-environment",
+  "homepage": "https://github.com/burdiuz/js-dom-walker",
   "bugs": {
-    "url": "https://github.com/burdiuz/js-lib-environment/issues",
+    "url": "https://github.com/burdiuz/js-dom-walker/issues",
     "email": "burdiuz@gmail.com"
   },
   "license": "MIT",
   "author": "Oleg Galaburda <burdiuz@gmail.com> (http://actualwave.com/)",
   "repository": {
     "type": "git",
-    "url": "https://github.com/burdiuz/js-lib-environment.git"
+    "url": "https://github.com/burdiuz/js-dom-walker.git"
   },
-  "dependencies": {},
+  "dependencies": {
+    "tree-walker": "git://github.com/burdiuz/js-tree-walker.git#0.0.1"
+  },
   "devDependencies": {
     "babel-core": "^6.26.0",
     "babel-eslint": "^8.2.2",
