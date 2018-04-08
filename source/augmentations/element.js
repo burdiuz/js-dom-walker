@@ -9,12 +9,12 @@ const attributes = (node, adapter) =>
 
 const query = (node, adapter, [queryString], utils) => {
   const result = adapter.toNode(node).querySelector(queryString);
-  return utils.wrapWithProxy(adapter.isNode(result) ? result : [], adapter);
+  return utils.wrap(adapter.isNode(result) ? result : [], adapter);
 };
 
 const queryAll = (node, adapter, [queryString], utils) => {
   const result = adapter.toNode(node).querySelectorAll(queryString);
-  return utils.wrapWithProxy(result, adapter);
+  return utils.wrap(result, adapter);
 };
 
 export default {

@@ -1,7 +1,7 @@
 {
   "name": "dom-walker",
   "description": "Library build on ES6 Proxies for traversing HTML DOM.",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "main": "dist/dom-walker.js",
   "keywords": [
     "js",
@@ -19,7 +19,7 @@
     "url": "https://github.com/burdiuz/js-dom-walker.git"
   },
   "dependencies": {
-    "tree-walker": "git://github.com/burdiuz/js-tree-walker.git#0.0.2"
+    "tree-walker": "git://github.com/burdiuz/js-tree-walker.git#0.0.3"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",

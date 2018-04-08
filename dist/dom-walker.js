@@ -82,7 +82,7 @@
 
 	const createWalkerNode = (node, adapter, childName = undefined) => {
 	  function TreeWalker() {
-	    throw new Error('should have been never called');
+	    throw new Error('Should have been never called');
 	  }
 
 	  // can be single Node and NodeList with length >= 0
@@ -95,7 +95,7 @@
 	  return TreeWalker;
 	};
 
-	const wrapWithProxy = (node, adapter, childName = undefined) => {
+	const wrap = (node, adapter, childName = undefined) => {
 	  if (!adapter.isNode(node) && !adapter.isList(node)) {
 	    return node;
 	  }
@@ -109,7 +109,7 @@
 	  getValue,
 	  getSingleNode,
 	  getNodeList,
-	  wrapWithProxy
+	  wrap
 	};
 
 	const get = ({ node, adapter, childName }, key) => {
@@ -120,7 +120,7 @@
 	   if numeric index used, use node as parent and childName is undefined
 	   */
 	  if (isIntKey(key)) {
-	    return wrapWithProxy(adapter.getNodeAt(getNodeList(node, adapter, childName), key), adapter);
+	    return wrap(adapter.getNodeAt(getNodeList(node, adapter, childName), key), adapter);
 	  }
 
 	  if (isPrefixedKey(key)) {
@@ -129,7 +129,7 @@
 	  }
 
 	  // return wrap with node and childName
-	  return wrapWithProxy(getValue(node, adapter, childName), adapter, key);
+	  return wrap(getValue(node, adapter, childName), adapter, key);
 	};
 
 	const has = ({ node, adapter, childName }, key) => {
@@ -164,7 +164,7 @@
 	    return applyAugmentation(childName, node, adapter, argumentsList, utils);
 	  }
 
-	  // FIXME might throw only in dev mode(needs implmentation)
+	  // FIXME might throw only in dev mode(needs implementation)
 	  throw new Error(`"${childName}" is not a callable object.`);
 	};
 
@@ -192,14 +192,14 @@
 	    list = adapter.getChildren(node);
 	  }
 
-	  return utils.wrapWithProxy(list, adapter);
+	  return utils.wrap(list, adapter);
 	};
 
-	const childAt = (node, adapter, [index = 0], utils) => utils.wrapWithProxy(adapter.getChildAt(node, index), adapter);
+	const childAt = (node, adapter, [index = 0], utils) => utils.wrap(adapter.getChildAt(node, index), adapter);
 
-	const root = (node, adapter, args, utils) => utils.wrapWithProxy(adapter.getNodeRoot(node), adapter);
+	const root = (node, adapter, args, utils) => utils.wrap(adapter.getNodeRoot(node), adapter);
 
-	const parent = (node, adapter, args, utils) => utils.wrapWithProxy(adapter.getNodeParent(node), adapter);
+	const parent = (node, adapter, args, utils) => utils.wrap(adapter.getNodeParent(node), adapter);
 
 	var node = {
 	  children,
@@ -228,24 +228,24 @@
 	    }
 	  }
 
-	  return utils.wrapWithProxy(result, adapter);
+	  return utils.wrap(result, adapter);
 	};
 
 	const filter = (node, adapter, [callback], utils) => {
 	  // apply filter on element collection
-	  // allways return wrapped list
+	  // always return wrapped list
 	  node = adapter.toList(node);
 	  const list = [];
 
-	  const wrappedNode = utils.wrapWithProxy(node, adapter);
+	  const wrappedNode = utils.wrap(node, adapter);
 	  for (let index = 0; index < node.length; index += 1) {
 	    const child = node[index];
-	    if (callback(utils.wrapWithProxy(child, adapter), index, wrappedNode)) {
+	    if (callback(utils.wrap(child, adapter), index, wrappedNode)) {
 	      list.push(child);
 	    }
 	  }
 
-	  return utils.wrapWithProxy(list, adapter);
+	  return utils.wrap(list, adapter);
 	};
 
 	const map = (node, adapter, [callback, wrapNodes = true], utils) => {
@@ -257,25 +257,25 @@
 	  const list = [];
 
 	  let areNodes = true;
-	  const wrappedNode = utils.wrapWithProxy(node, adapter);
+	  const wrappedNode = utils.wrap(node, adapter);
 	  for (let index = 0; index < node.length; index += 1) {
 	    const child = node[index];
-	    const result = callback(utils.wrapWithProxy(child, adapter), index, wrappedNode);
+	    const result = callback(utils.wrap(child, adapter), index, wrappedNode);
 	    areNodes = areNodes && adapter.isNode(result);
 	    list.push(result);
 	  }
 
-	  return wrapNodes && areNodes ? utils.wrapWithProxy(list, adapter) : list;
+	  return wrapNodes && areNodes ? utils.wrap(list, adapter) : list;
 	};
 
 	const reduce = (node, adapter, [callback, result], utils) => {
 	  // apply reduce on element collection
 	  node = adapter.toList(node);
 
-	  const wrappedNode = utils.wrapWithProxy(node, adapter);
+	  const wrappedNode = utils.wrap(node, adapter);
 	  for (let index = 0; index < node.length; index += 1) {
 	    const child = node[index];
-	    result = callback(result, utils.wrapWithProxy(child, adapter), index, wrappedNode);
+	    result = callback(result, utils.wrap(child, adapter), index, wrappedNode);
 	  }
 
 	  return result;
@@ -291,7 +291,7 @@
 
 	addAugmentations(coreAugmentations);
 
-	const create = (root, adapter = getDefaultAdapter()) => wrapWithProxy(adapter.validateRoot(root), adapter);
+	const create = (root, adapter = getDefaultAdapter()) => wrap(adapter.validateRoot(root), adapter);
 
 	exports.setDefaultAdapter = setDefaultAdapter;
 	exports.getDefaultAdapter = getDefaultAdapter;
@@ -349,12 +349,12 @@
 
 	const query = (node, adapter, [queryString], utils) => {
 	  const result = adapter.toNode(node).querySelector(queryString);
-	  return utils.wrapWithProxy(adapter.isNode(result) ? result : [], adapter);
+	  return utils.wrap(adapter.isNode(result) ? result : [], adapter);
 	};
 
 	const queryAll = (node, adapter, [queryString], utils) => {
 	  const result = adapter.toNode(node).querySelectorAll(queryString);
-	  return utils.wrapWithProxy(result, adapter);
+	  return utils.wrap(result, adapter);
 	};
 
 	var htmlElementAugmentations = {
