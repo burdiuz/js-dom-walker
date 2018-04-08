@@ -7,7 +7,7 @@ import {
   nodeAugmentations,
   listAugmentations,
   create as createRoot,
-} from 'tree-walker';
+} from '@actualwave/tree-walker';
 
 import htmlEventAugmentations from './augmentations/event';
 import htmlElementAugmentations from './augmentations/element';
