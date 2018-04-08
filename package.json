@@ -1,7 +1,7 @@
 {
-  "name": "dom-walker",
+  "name": "@actualwave/dom-walker",
   "description": "Library build on ES6 Proxies for traversing HTML DOM.",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "main": "dist/dom-walker.js",
   "keywords": [
     "js",
