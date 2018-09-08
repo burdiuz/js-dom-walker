@@ -1,15 +1,11 @@
 {
   "name": "@actualwave/dom-walker",
   "description": "Library build on ES6 Proxies for traversing HTML DOM.",
-  "version": "0.0.5",
+  "version": "0.0.4",
   "main": "dist/dom-walker.js",
   "keywords": [
     "js",
-    "javascript",
-    "dom",
-    "traverse",
-    "tree",
-    "walker"
+    "javascript"
   ],
   "homepage": "https://github.com/burdiuz/js-dom-walker",
   "bugs": {
@@ -26,7 +22,7 @@
     "@actualwave/tree-walker": "https://github.com/burdiuz/js-tree-walker.git",
     "@actualwave/walker-browserdom-adapter": "https://github.com/burdiuz/js-walker-browserdom-adapter.git",
     "@actualwave/walker-browserdom-augmentations": "https://github.com/burdiuz/js-walker-browserdom-augmentations.git",
-    "@actualwave/walker-property-handlers": "https://github.com/burdiuz/js-walker-property-handlers.git"
+    "@actualwave/walker-property-handlers": "^https://github.com/burdiuz/js-walker-property-handlers.git"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",

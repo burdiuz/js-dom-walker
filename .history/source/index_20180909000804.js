@@ -11,7 +11,7 @@ import {
 import BrowserDOMAdapter from '@actualwave/walker-browserdom-adapter';
 import {
   eventAugmentations,
-  elementAugmentations
+  elementAugmentations,
 } from '@actualwave/walker-browserdom-augmentations';
 import { createHandlers } from '@actualwave/walker-property-handlers';
 
@@ -23,7 +23,8 @@ addAugmentations(elementAugmentations);
 
 setNamePrefix('$', createHandlers());
 
-const create = (root, adapter = BrowserDOMAdapter) => createRoot(root, adapter);
+export const create = (root, adapter = BrowserDOMAdapter) =>
+  createRoot(root, adapter);
 
 export { addAugmentations, resetAugmentations, setNamePrefix, create };
 

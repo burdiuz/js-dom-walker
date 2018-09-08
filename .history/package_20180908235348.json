@@ -1,15 +1,11 @@
 {
   "name": "@actualwave/dom-walker",
   "description": "Library build on ES6 Proxies for traversing HTML DOM.",
-  "version": "0.0.5",
+  "version": "0.0.4",
   "main": "dist/dom-walker.js",
   "keywords": [
     "js",
-    "javascript",
-    "dom",
-    "traverse",
-    "tree",
-    "walker"
+    "javascript"
   ],
   "homepage": "https://github.com/burdiuz/js-dom-walker",
   "bugs": {

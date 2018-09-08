@@ -1,15 +1,11 @@
 {
   "name": "@actualwave/dom-walker",
   "description": "Library build on ES6 Proxies for traversing HTML DOM.",
-  "version": "0.0.5",
+  "version": "0.0.4",
   "main": "dist/dom-walker.js",
   "keywords": [
     "js",
-    "javascript",
-    "dom",
-    "traverse",
-    "tree",
-    "walker"
+    "javascript"
   ],
   "homepage": "https://github.com/burdiuz/js-dom-walker",
   "bugs": {
@@ -23,10 +19,7 @@
     "url": "https://github.com/burdiuz/js-dom-walker.git"
   },
   "dependencies": {
-    "@actualwave/tree-walker": "https://github.com/burdiuz/js-tree-walker.git",
-    "@actualwave/walker-browserdom-adapter": "https://github.com/burdiuz/js-walker-browserdom-adapter.git",
-    "@actualwave/walker-browserdom-augmentations": "https://github.com/burdiuz/js-walker-browserdom-augmentations.git",
-    "@actualwave/walker-property-handlers": "https://github.com/burdiuz/js-walker-property-handlers.git"
+    "@actualwave/tree-walker": "^0.0.4"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
@@ -59,8 +52,9 @@
     "uglify-es": "^3.3.10"
   },
   "lint-staged": {
+    "source/**/!(__tests__/).js": "eslint --fix",
+    "{source/**/__tests__/*.js,source/**/__mocks__/*.js}": "eslint -c eslintrc.spec.json --fix",
     "source/**/*.js": [
-      "eslint --fix",
       "prettier --write",
       "git add"
     ]
@@ -108,8 +102,10 @@
     "start": "build",
     "build": "rollup --config",
     "build:watch": "rollup --config --watch \"./source\"",
-    "lint": "./node_modules/.bin/eslint \"source/**/*.js\"",
+    "lint": "./node_modules/.bin/eslint \"source/**/!(__tests__/)*.js\"",
+    "lint:spec": "./node_modules/.bin/eslint -c eslintrc.spec.json \"source/**/__tests__/*.js\"",
     "flow": "./node_modules/.bin/flow",
+    "server": "rollup --config rollup.serve.js",
     "test": "jest --colors",
     "test:watch": "jest --colors --watch",
     "lint-staged": "lint-staged",
