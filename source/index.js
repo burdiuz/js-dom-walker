@@ -36,7 +36,11 @@ addAugmentations(elementAugmentations);
 
 setNamePrefix('$', createHandlers());
 
-const create = (root, adapter = BrowserDOMAdapter) => createRoot(root, adapter);
+const create = (root, adapter = BrowserDOMAdapter) =>
+  createRoot(root, {
+    ...adapter,
+    getName: (({ getName }) => (...args) => getName(...args).toLowerCase())(adapter),
+  });
 
 export { addAugmentations, resetAugmentations, setNamePrefix, create };
 

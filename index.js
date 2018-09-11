@@ -831,7 +831,9 @@ treeWalker_3(walkerBrowserdomAugmentations_2);
 
 treeWalker_9('$', walkerPropertyHandlers_2());
 
-const create$$1 = (root, adapter = BrowserDOMAdapter) => treeWalker_11(root, adapter);
+const create$$1 = (root, adapter = BrowserDOMAdapter) => treeWalker_11(root, Object.assign({}, adapter, {
+  getName: (({ getName }) => (...args) => getName(...args).toLowerCase())(adapter)
+}));
 
 exports.addAugmentations = treeWalker_3;
 exports.resetAugmentations = treeWalker_5;
