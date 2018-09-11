@@ -1,7 +1,7 @@
 {
   "name": "@actualwave/dom-walker",
   "description": "Library build on TreeWalker for traversing HTML DOM.",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "main": "index.js",
   "keywords": [
     "js",

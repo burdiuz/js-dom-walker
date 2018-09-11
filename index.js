@@ -814,7 +814,17 @@ var walkerPropertyHandlers_1 = walkerPropertyHandlers.createROHandlers;
 var walkerPropertyHandlers_2 = walkerPropertyHandlers.createHandlers;
 
 treeWalker_3(treeWalker_6);
-treeWalker_3(treeWalker_7);
+treeWalker_3(Object.assign({}, treeWalker_7, {
+  descendants: (({ descendants }) => (node, adapter, args, utils) => {
+    const [childName] = args;
+
+    if (childName) {
+      return descendants(node, adapter, [childName.toLowerCase()], utils);
+    }
+
+    return descendants(node, adapter, args, utils);
+  })(treeWalker_7)
+}));
 treeWalker_3(treeWalker_8);
 treeWalker_3(walkerBrowserdomAugmentations_1);
 treeWalker_3(walkerBrowserdomAugmentations_2);

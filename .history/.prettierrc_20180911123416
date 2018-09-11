@@ -1,6 +1,0 @@
-{
-  "singleQuote": true,
-  "trailing-comma": "all",
-  "arrowParens": "always",
-  "parser": "flow"
-}

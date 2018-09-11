@@ -18,7 +18,18 @@ import {
 import { createHandlers } from '@actualwave/walker-property-handlers';
 
 addAugmentations(coreAugmentations);
-addAugmentations(nodeAugmentations);
+addAugmentations({
+  ...nodeAugmentations,
+  descendants: (({ descendants }) => (node, adapter, args, utils) => {
+    const [childName] = args;
+
+    if (childName) {
+      return descendants(node, adapter, [childName.toLowerCase()], utils);
+    }
+
+    return descendants(node, adapter, args, utils);
+  })(nodeAugmentations),
+});
 addAugmentations(listAugmentations);
 addAugmentations(eventAugmentations);
 addAugmentations(elementAugmentations);
