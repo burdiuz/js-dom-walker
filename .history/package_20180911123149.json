@@ -1,7 +1,7 @@
 {
   "name": "@actualwave/dom-walker",
   "description": "Library build on TreeWalker for traversing HTML DOM.",
-  "version": "0.0.6",
+  "version": "0.0.5",
   "main": "index.js",
   "keywords": [
     "js",
@@ -26,8 +26,8 @@
   },
   "dependencies": {
     "@actualwave/tree-walker": "^1.0.6",
-    "@actualwave/walker-browserdom-adapter": "^0.0.1",
-    "@actualwave/walker-browserdom-augmentations": "^0.0.2",
+    "@actualwave/walker-browserdom-adapter": "0.0.1",
+    "@actualwave/walker-browserdom-augmentations": "0.0.2",
     "@actualwave/walker-property-handlers": "^0.0.1"
   },
   "devDependencies": {
@@ -66,6 +66,12 @@
       "prettier --write",
       "git add"
     ]
+  },
+  "prettier": {
+    "singleQuote": true,
+    "trailing-comma": "es5",
+    "arrowParens": "always",
+    "parser": "flow"
   },
   "babel": {
     "env": {

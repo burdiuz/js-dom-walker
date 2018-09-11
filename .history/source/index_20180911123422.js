@@ -5,7 +5,7 @@ import {
   coreAugmentations,
   nodeAugmentations,
   listAugmentations,
-  create as createRoot,
+  create as createRoot
 } from '@actualwave/tree-walker';
 
 import BrowserDOMAdapter from '@actualwave/walker-browserdom-adapter';

@@ -67,6 +67,12 @@
       "git add"
     ]
   },
+  "prettier": {
+    "singleQuote": true,
+    "trailing-comma": "es5",
+    "arrowParens": "always",
+    "parser": "flow"
+  },
   "babel": {
     "env": {
       "test": {
