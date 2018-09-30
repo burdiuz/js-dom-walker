@@ -42,6 +42,12 @@ export const baseConfig = {
     },
   ],
   plugins,
+  external: [
+    '@actualwave/tree-walker',
+    '@actualwave/walker-browserdom-adapter',
+    '@actualwave/walker-browserdom-augmentations',
+    '@actualwave/walker-property-handlers',
+  ],
 };
 
 export const minConfig = {
@@ -55,8 +61,5 @@ export const minConfig = {
       format: 'umd',
     },
   ],
-  plugins: [
-    ...plugins,
-    uglify({}, minify),
-  ],
+  plugins: [...plugins, uglify({}, minify)],
 };
